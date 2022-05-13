@@ -20,12 +20,13 @@
 	<body>
 		<div class="margin">
 			<?php echo "<h1>Sad Slices.</h1>" ?>
-			<?php echo "<h4>serving you woeful whole-wheat bread since 1928. I think.</h4>"?>
+			<?php echo "<h4>Serving you woeful whole-wheat bread since 1928. I think. I'm too miserable to remember.</h4>"?>
 			<br>
 			<?php echo "<h3>You're ordering at Sad Slices.<br> Enter your order somewhere.</h3>"?>
 			<br>	
 			<!-- order buttons and information. -->
 				<!-- drop-down menu for slices -->
+			<form method = "post">
 					<label for="slices"><h4>Choose a slice.</h4></label>
 					<select name="slices" id="slices">
 						<option value="nothing"></option>
@@ -46,19 +47,36 @@
 					</select>
 				<br>
 				<!-- drink option-->
-				<h4>Tap water on the side?</h4>
+				<?php echo '<h4>Tap water on the side?</h4>'?>
 				<input type="checkbox" id="myCheck" onclick="javascript:happySlices()">
-				<label for="myCheck">I guess so..</label>
+				<label for="myCheck">I guess...</label>
 				<br>
 				<br>
 				<!-- button to sumbit your answer -->
-				<input type = "submit" name = "submit" value="order."> 
+				<input type = "submit" name = "order" value="order">
 				<!-- calculation -->
 				<?php   
-					if (isset($_POST["submit"])) {   
-					
+					if (isset($_POST["order"])){
+						//variables
+						$slice= $_POST["slices"]; 
+						$toppings= $_POST["toppings"];
+						//if statement for size
+						if ($slice == "1"){
+							$size = 4;
 						}
+						else if ($slice == "2"){
+							$size = 7;
+						}
+						else if ($slice == "3"){
+							$size = 10;
+						}
+						else {
+							$size = 0;
+						}
+						
+					}
 					?>
+			</form>
 		</div>
 	</body>
 </html>
